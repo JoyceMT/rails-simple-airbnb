@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database...'
+Flat.destroy_all
+
+puts 'Creating flats...'
+air = { name: 'Air', address: '7 James St, London', description: 'A lovely summer feel for this spacious garden flat. Two double bedrooms, open plan living area, large kitchen and a beautiful conservatory', price_per_night: 75, number_of_guests: 3 }
+fire = { name: 'Fire', address: '7 James St, London', description: 'A lovely summer feel for this spacious garden flat. One double bedrooms, open plan living area, large kitchen and a beautiful conservatory', price_per_night: 90, number_of_guests: 2 }
+earth = { name: 'Earth', address: '7 James St, London', description: 'A lovely summer feel for this spacious garden flat. Two double bedrooms, open plan living area, large kitchen and a beautiful conservatory', price_per_night: 100, number_of_guests: 4 }
+water = { name: 'Water', address: '7 James St, London', description: 'A lovely summer feel for this spacious garden flat. One double bedrooms, open plan living area, large kitchen and a beautiful conservatory', price_per_night: 90, number_of_guests: 2 }
+
+[air, fire, earth, water].each do |attributes|
+  flat = Flat.create!(attributes)
+  puts "Created #{flat.name}"
+end
+puts 'Finished!'
